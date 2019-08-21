@@ -25,14 +25,24 @@ namespace BingMapsSample
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    var values = line.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-                    lon.Add(Double.Parse(values[0], CultureInfo.InvariantCulture));
-                    lat.Add(Double.Parse(values[1], CultureInfo.InvariantCulture));
-                    data.Add(Double.Parse(values[2], CultureInfo.InvariantCulture));
+                    var values = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    double x = Double.Parse(values[3]);
+                    x = Math.Floor(x) + (x - Math.Floor(x)) / 0.60;
+                    double y = Double.Parse(values[2]);
+                    y = Math.Floor(y) + (y - Math.Floor(y)) / 0.60;
+
+                    lon.Add(x);
+                    lat.Add(y);
+                    //data.Add(Double.Parse(values[2], CultureInfo.InvariantCulture));
+                    double z = Double.Parse(values[4]);
+                    z = 10 * Math.Sqrt(z);
+                    //z = 10 * Math.Sqrt(z);
+                    data.Add(z*10);
                 }
             }
 
-            markers.PlotColor(lon.ToArray(), lat.ToArray(), data.ToArray());
+            markers.PlotColorSize(lon.ToArray(), lat.ToArray(), data.ToArray(), data.ToArray());
         }
     }
 }
