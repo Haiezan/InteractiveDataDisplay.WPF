@@ -7,13 +7,15 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:d3="clr-namespace:InteractiveDataDisplay.WPF;assembly=InteractiveDataDisplay.WPF"
         mc:Ignorable="d"
-        Title="Bing map" Height="600" Width="800">
+        Title="Beams' map" Height="600" Width="800">
 
     <Grid x:Name="LayoutRoot" Background="White">
         <m:Map Mode="Road" Name="bingmap" CredentialsProvider="VVKZOVeJJNbmRt6WLD62~82jXl8h7r2OYAlk9lVcqow~AoyODO6W7rUQOL0tL9KuT3zzZu_YsNb2VXyGgnSETxTTey6_hYWoNDhztu6FdBVq">
             <d3:BingMapsPlot Name="plot">
                 <d3:CircleMarkerGraph Name="markers" ColorDescription="Crop density" Size="6" YDataTransform="{Binding YDataTransform, ElementName=plot}" ClipToBounds="False" />
             </d3:BingMapsPlot>
+            <TextBlock Text="*梁柱墙笔记*粉丝地域分布图" FontSize="50" HorizontalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" Margin="20" Foreground="DarkGoldenrod"/>
+            <Image Source="qrcode.jpg" Width="200" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50"/>
         </m:Map>
     </Grid>
 </Window>
